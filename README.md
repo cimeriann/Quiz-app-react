@@ -1,6 +1,7 @@
 # Quiz Web-App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 **This quiz app makes use of [opentdb's api](https://opentdb.com/browse.php) to generate questions**
 
 ## Available Scripts
