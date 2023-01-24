@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+// Components
 import QuestionCard from "./components/QuestionCard";
+import { fetchQuizQuestions } from "./components/Api";
+//Types
+import { Difficulty } from "./components/Api";
 
 const TOTAL_QUESTIONS = 10;
 function App() {
@@ -13,6 +17,7 @@ function App() {
   const startTrivia = async () => {};
   const checkAnswer = async (e: React.MouseEvent<HTMLButtonElement>) => {};
   const displayNextQuestion = async () => {};
+  console.log(fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY));
   return (
     <div className="App">
       <h1>React Quiz</h1>
@@ -21,14 +26,14 @@ function App() {
       </button>
       <p className="score">Score:</p>
       <p>Loading Questions</p>
-      <QuestionCard
+      {/* <QuestionCard
         questionNumber={number + 1}
         totalQuestions={TOTAL_QUESTIONS}
         question={questions[number].question}
         answers={questions[number].answers}
         userAnswer={userAnswers ? userAnswers[number] : undefined}
         callback={checkAnswer}
-      />
+      /> */}
       <button className="next" onClick={displayNextQuestion}>
         Next Question
       </button>
