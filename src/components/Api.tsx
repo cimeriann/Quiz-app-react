@@ -1,4 +1,5 @@
 import { type } from "@testing-library/user-event/dist/type";
+import { shuffleArray } from "./Utils";
 
 export enum Difficulty {
   EASY = "easy",
@@ -8,9 +9,9 @@ export enum Difficulty {
 
 export type Question = {
   category: string;
-  correct_answer: string;
+  correct_answers: string;
   difficulty: string;
-  incorrect_answer: string[];
+  incorrect_answers: string[];
   question: string;
   type: string;
 };
@@ -22,5 +23,11 @@ export const fetchQuizQuestions = async (
 ) => {
   const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
   const data = await (await fetch(endpoint)).json();
-  console.log(data);
+  return data.results?.map((question: Question) => ({
+    ...question,
+    answers: shuffleArray([
+      ...question.incorrect_answers,
+      question.correct_answers,
+    ]),
+  }));
 };
