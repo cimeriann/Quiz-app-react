@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Screenshots
 
-sso1 (1).png
+![screenshot 1](C:\Users\Hp Folio\Documents\Coding stuff\React Projects\quiz-app\sso1 (1).png)
 
 ## Available Scripts
 
