@@ -38,9 +38,27 @@ function App() {
       window.alert(err);
     }
   };
-  const checkAnswer = async (e: React.MouseEvent<HTMLButtonElement>) => {};
+  const checkAnswer = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!gameOver) {
+      //grab user answers
+      const answer = e.currentTarget.value;
+      //check answer against correct_answer
+      const correct = questions[number].correct_answer === answer;
+      //update scores if answer is correct
+      if (correct) {
+        setScore((prev) => prev + 1);
+      }
+      //save answer in the array of user answers
+      const answerObject = {
+        question: questions[number].question,
+        answer,
+        correct,
+        correctAnswer: questions[number].correct_answer,
+      };
+      setUserAnswers((prev) => [...prev, answerObject]);
+    }
+  };
   const displayNextQuestion = async () => {};
-  console.log(questions);
   return (
     <div className="App">
       <h1>React Quiz</h1>
@@ -62,9 +80,14 @@ function App() {
           callback={checkAnswer}
         />
       )}
-      <button className="next" onClick={displayNextQuestion}>
-        Next Question
-      </button>
+      {!gameOver &&
+      !loading &&
+      userAnswers.length === number + 1 &&
+      number !== TOTAL_QUESTIONS - 1 ? (
+        <button className="next" onClick={displayNextQuestion}>
+          Next Question
+        </button>
+      ) : null}
     </div>
   );
 }
