@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 **This quiz app makes use of [opentdb's api](https://opentdb.com/browse.php) to generate questions**
 
+# Screenshots
+
+sso1 (1).png
+
 ## Available Scripts
 
 In the project directory, you can run:
